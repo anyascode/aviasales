@@ -1,0 +1,70 @@
+.flights {
+  &__list {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  &__item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px #dfe5ec solid;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .price {
+      font-size: 24px;
+      font-weight: 600;
+      color: #2196f3;
+    }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &__route {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      .cities {
+        font-weight: 600;
+        color: #a0b0b9;
+        text-transform: uppercase;
+      }
+    }
+
+    &__duration {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      .on-route {
+        font-weight: 600;
+        color: #a0b0b9;
+        text-transform: uppercase;
+      }
+    }
+
+    &__layovers {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      .layover {
+        font-weight: 600;
+        color: #a0b0b9;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
