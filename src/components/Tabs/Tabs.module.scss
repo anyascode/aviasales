@@ -1,18 +1,19 @@
 .tabs {
-  &__list {
+  &List {
     list-style: none;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     margin: 0;
     background-color: white;
     border-radius: 5px;
     padding-left: 0;
     border: 1px #dfe5ec solid;
   }
-  &__item {
+  &Item {
     font-weight: 600;
     text-transform: uppercase;
-    padding: 18px;
     text-align: center;
+    padding: 18px;
     &:nth-child(2) {
       border-left: 1px #dfe5ec solid;
       border-right: 1px #dfe5ec solid;
@@ -20,7 +21,7 @@
     &:hover {
       cursor: pointer;
     }
-    .active {
+    &Active {
       background-color: #2196f3;
       color: white;
     }

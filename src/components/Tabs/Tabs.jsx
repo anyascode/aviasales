@@ -1,12 +1,12 @@
-import './Tabs.scss';
+import style from './Tabs.module.scss';
 
 function Tabs() {
   return (
-    <div className="tabs">
-      <ul className="tabs__list">
-        <li className="tabs__item">Самый дешевый</li>
-        <li className="tabs__item">Самый быстрый</li>
-        <li className="tabs__item">Оптимальный</li>
+    <div className={style.tabs}>
+      <ul className={style.tabsList}>
+        <li className={style.tabsItem}>Самый дешевый</li>
+        <li className={style.tabsItem}>Самый быстрый</li>
+        <li className={style.tabsItem}>Оптимальный</li>
       </ul>
     </div>
   );

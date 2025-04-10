@@ -1,38 +1,38 @@
-import './Checkbox.scss';
+import style from './Checkbox.module.scss';
 
 function Checkbox() {
   return (
-    <div className="checkbox">
-      <h2 className="checkbox__title">Количество пересадок</h2>
+    <div className={style.checkbox}>
+      <h2 className={style.checkboxTitle}>Количество пересадок</h2>
 
-      <label className="checkbox__item">
-        <span className="checkbox__label">Все</span>
+      <label className={style.checkboxItem}>
+        <span className={style.checkboxLabel}>Все</span>
         <input type="checkbox" />
-        <span className="checkmark"></span>
+        <span className={style.checkmark}></span>
       </label>
 
-      <label className="checkbox__item">
-        <span className="checkbox__label">Без пересадок</span>
+      <label className={style.checkboxItem}>
+        <span className={style.checkboxLabel}>Без пересадок</span>
         <input type="checkbox" />
-        <span className="checkmark"></span>
+        <span className={style.checkmark}></span>
       </label>
 
-      <label className="checkbox__item">
-        <span className="checkbox__label">1 пересадка</span>
+      <label className={style.checkboxItem}>
+        <span className={style.checkboxLabel}>1 пересадка</span>
         <input type="checkbox" />
-        <span className="checkmark"></span>
+        <span className={style.checkmark}></span>
       </label>
 
-      <label className="checkbox__item">
-        <span className="checkbox__label"> 2 пересадки</span>
+      <label className={style.checkboxItem}>
+        <span className={style.checkboxLabel}>2 пересадки</span>
         <input type="checkbox" />
-        <span className="checkmark"></span>
+        <span className={style.checkmark}></span>
       </label>
 
-      <label className="checkbox__item">
-        <span className="checkbox__label">3 пересадки</span>
+      <label className={style.checkboxItem}>
+        <span className={style.checkboxLabel}>3 пересадки</span>
         <input type="checkbox" />
-        <span className="checkmark"></span>
+        <span className={style.checkmark}></span>
       </label>
     </div>
   );
