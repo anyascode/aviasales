@@ -16,11 +16,13 @@ function Flight({ price, carrier, segments }) {
 
   function getArrivalTime(departure, duration) {
     let [hours, minutes] = getDepartureTime(departure).split(':');
-    let totalMinutes = duration - (hours * 60 + Number(minutes));
+    let totalMinutes = Math.abs(duration - (hours * 60 + Number(minutes)));
     const hrs = String(Math.floor(totalMinutes / 60)).padStart(2, '0');
     const mns = String(Math.floor(totalMinutes % 60)).padStart(2, '0');
     return `${hrs}:${mns}`;
   }
+
+  console.log(wayBack);
   return (
     <>
       <div className={style.flightsTitle}>
