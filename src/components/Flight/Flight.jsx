@@ -22,7 +22,6 @@ function Flight({ price, carrier, segments }) {
     return `${hrs}:${mns}`;
   }
 
-  console.log(wayBack);
   return (
     <>
       <div className={style.flightsTitle}>

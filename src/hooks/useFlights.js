@@ -1,16 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchTicketsRequest, fetchTicketsSuccess, fetchTicketsFailure } from '../app/features/tickets/ticketSlice';
 
 export default function useFlights() {
-  const [tickets, setTickets] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
 
   async function fetchTickets() {
+    dispatch(fetchTicketsRequest());
+
     const fetchSearchId = await fetch('https://aviasales-test-api.kata.academy/search');
     const searchIdRes = await fetchSearchId.json();
     const searchId = searchIdRes.searchId;
 
     let ready = false;
+    let allTickets = [];
 
     while (!ready) {
       try {
@@ -23,26 +26,27 @@ export default function useFlights() {
         }
 
         const data = await res.json();
-        setTickets((prevTickets) => [...prevTickets, ...data.tickets]);
+        allTickets = [...allTickets, ...data.tickets];
+
         if (data.stop) {
           ready = true;
-          setLoading(false);
         } else {
           console.log('Еще не всё. Подгружаем дальше...');
           await new Promise((resolve) => setTimeout(resolve, 500));
         }
       } catch (err) {
-        setLoading(false);
-        setError(true);
+        dispatch(fetchTicketsFailure(err));
         console.error('Ошибка при загрузке. Повтор через 2 секунды...', err);
         await new Promise((resolve) => setTimeout(resolve, 2000));
       }
     }
+
+    dispatch(fetchTicketsSuccess(allTickets));
   }
 
   useEffect(() => {
     fetchTickets();
   }, []);
 
-  return { tickets, loading, error };
+  return null;
 }

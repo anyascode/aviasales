@@ -2,10 +2,17 @@ import Flight from '../Flight/Flight';
 import style from './FlightsList.module.scss';
 import useFlights from '../../hooks/useFlights';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 export default function FlightsList() {
-  const { tickets, loading, error } = useFlights();
   const [visible, setVisible] = useState(5);
+  useFlights();
+
+  const tickets = useSelector((state) => state.tickets.tickets);
+  const loading = useSelector((state) => state.tickets.loading);
+  const error = useSelector((state) => state.tickets.error);
+
+  console.log(tickets.filter((ticket) => ticket.segments.some((t) => t.stops.length === 0)));
 
   if (loading) return <p>Поиск билетов...</p>;
   if (error) return <p>Ошибка</p>;
