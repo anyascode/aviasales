@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchTicketsRequest, fetchTicketsSuccess, fetchTicketsFailure } from '../app/features/tickets/ticketSlice';
+import { fetchTicketsRequest, fetchTicketsFailure, addTickets } from '../app/features/tickets/ticketSlice';
 
 export default function useFlights() {
   const dispatch = useDispatch();
@@ -13,7 +13,6 @@ export default function useFlights() {
     const searchId = searchIdRes.searchId;
 
     let ready = false;
-    let allTickets = [];
 
     while (!ready) {
       try {
@@ -26,7 +25,7 @@ export default function useFlights() {
         }
 
         const data = await res.json();
-        allTickets = [...allTickets, ...data.tickets];
+        dispatch(addTickets(data.tickets));
 
         if (data.stop) {
           ready = true;
@@ -40,8 +39,6 @@ export default function useFlights() {
         await new Promise((resolve) => setTimeout(resolve, 2000));
       }
     }
-
-    dispatch(fetchTicketsSuccess(allTickets));
   }
 
   useEffect(() => {
