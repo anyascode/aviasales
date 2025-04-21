@@ -30,55 +30,58 @@ function Flight({ price, carrier, segments }) {
       </div>
       <div className={style.flightsInfo}>
         <div className={style.flightsInfoRoute}>
-          <p className={style.cities}>
-            {oneWay.origin} – {oneWay.destination}
-          </p>
-          <p className={style.time}>
-            {getDepartureTime(oneWay.date)} – {getArrivalTime(oneWay.date, oneWay.duration)}
-          </p>
+          <div className={style.segment}>
+            <p className={style.cities}>
+              {oneWay.origin} – {oneWay.destination}
+            </p>
+            <p className={style.time}>
+              {getDepartureTime(oneWay.date)} – {getArrivalTime(oneWay.date, oneWay.duration)}
+            </p>
+          </div>
+          <div className={style.segment}>
+            <p className={style.cities}>
+              {wayBack.origin} – {wayBack.destination}
+            </p>
+            <p className={style.time}>
+              {getDepartureTime(wayBack.date)} – {getArrivalTime(wayBack.date, wayBack.duration)}
+            </p>
+          </div>
         </div>
         <div className={style.flightsInfoDuration}>
-          <p className={style['on-route']}>В пути</p>
-          <p className="time">{formatTime(oneWay.duration)}</p>
+          <div className={style.segment}>
+            <p className={style['on-route']}>В пути</p>
+            <p className="time">{formatTime(oneWay.duration)}</p>
+          </div>
+          <div className={style.segment}>
+            <p className={style['on-route']}>В пути</p>
+            <p className="time">{formatTime(wayBack.duration)}</p>
+          </div>
         </div>
         <div className={style.flightsInfoLayovers}>
-          <p className={style.layover}>
-            {oneWay.stops.length >= 2
-              ? `${oneWay.stops.length} пересадки`
-              : oneWay.stops.length === 1
-                ? `1 пересадка`
-                : `Без пересадок`}
-          </p>
-          <p className={style.location}>
-            {oneWay.stops.length > 1 ? oneWay.stops.join(', ') : oneWay.stops.length === 1 ? oneWay.stops : `—`}
-          </p>
-        </div>
-      </div>
-      <div className={style.flightsInfo}>
-        <div className={style.flightsInfoRoute}>
-          <p className={style.cities}>
-            {wayBack.origin} – {wayBack.destination}
-          </p>
-          <p className={style.time}>
-            {' '}
-            {getDepartureTime(wayBack.date)} – {getArrivalTime(wayBack.date, wayBack.duration)}
-          </p>
-        </div>
-        <div className={style.flightsInfoDuration}>
-          <p className={style['on-route']}>В пути</p>
-          <p className="time">{formatTime(wayBack.duration)}</p>
-        </div>
-        <div className={style.flightsInfoLayovers}>
-          <p className={style.layover}>
-            {wayBack.stops.length >= 2
-              ? `${wayBack.stops.length} пересадки`
-              : wayBack.stops.length === 1
-                ? `1 пересадка`
-                : `Без пересадок`}
-          </p>
-          <p className={style.location}>
-            {wayBack.stops.length > 1 ? wayBack.stops.join(', ') : wayBack.stops.length === 1 ? wayBack.stops : `—`}
-          </p>
+          <div className={style.segment}>
+            <p className={style.layover}>
+              {oneWay.stops.length >= 2
+                ? `${oneWay.stops.length} пересадки`
+                : oneWay.stops.length === 1
+                  ? `1 пересадка`
+                  : `Без пересадок`}
+            </p>
+            <p className={style.location}>
+              {oneWay.stops.length > 1 ? oneWay.stops.join(', ') : oneWay.stops.length === 1 ? oneWay.stops : `—`}
+            </p>
+          </div>
+          <div className={style.segment}>
+            <p className={style.layover}>
+              {wayBack.stops.length >= 2
+                ? `${wayBack.stops.length} пересадки`
+                : wayBack.stops.length === 1
+                  ? `1 пересадка`
+                  : `Без пересадок`}
+            </p>
+            <p className={style.location}>
+              {wayBack.stops.length > 1 ? wayBack.stops.join(', ') : wayBack.stops.length === 1 ? wayBack.stops : `—`}
+            </p>
+          </div>
         </div>
       </div>
     </>

@@ -9,12 +9,13 @@
   }
   &Item {
     background-color: white;
-    padding: 14px 20px;
+    padding: 20px 20px;
     border-radius: 5px;
     border: 1px #dfe5ec solid;
     display: flex;
     gap: 20px;
     flex-direction: column;
+    box-shadow: -1px 2px 11px 0px rgba(34, 60, 80, 0.2);
   }
 
   &Title {
@@ -32,12 +33,20 @@
   &Info {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+
+    .segment {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 5px;
+    }
 
     &Route {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 10px;
       .cities {
         font-weight: 600;
         color: #a0b0b9;
@@ -48,7 +57,7 @@
     &Duration {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 10px;
       .on-route {
         font-weight: 600;
         color: #a0b0b9;
@@ -59,7 +68,7 @@
     &Layovers {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 10px;
       .layover {
         font-weight: 600;
         color: #a0b0b9;

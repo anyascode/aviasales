@@ -7,6 +7,9 @@ const ticketSlice = createSlice({
     loading: false,
     error: null,
     filters: [0, 1, 2, 3],
+    sorting: 'cheapest',
+    done: false,
+    ticketId: 1,
   },
   reducers: {
     fetchTicketsRequest(state) {
@@ -14,12 +17,12 @@ const ticketSlice = createSlice({
       state.error = null;
     },
     addTickets(state, action) {
-      state.loading = false;
-      state.tickets = [...state.tickets, ...action.payload];
-    },
-    fetchTicketsSuccess(state, action) {
-      state.loading = false;
-      state.tickets = action.payload;
+      const newTickets = action.payload.map((ticket) => ({
+        ...ticket,
+        id: state.ticketId++,
+      }));
+
+      state.tickets = [...state.tickets, ...newTickets];
     },
     fetchTicketsFailure(state, action) {
       state.loading = false;
@@ -38,9 +41,23 @@ const ticketSlice = createSlice({
     setFilters(state, action) {
       state.filters = action.payload;
     },
+    setSorting(state, action) {
+      state.sorting = action.payload;
+    },
+    finishFetching(state) {
+      state.loading = false;
+      state.done = true;
+    },
   },
 });
 
-export const { fetchTicketsRequest, fetchTicketsSuccess, fetchTicketsFailure, addTickets, toggleFilter, setFilters } =
-  ticketSlice.actions;
+export const {
+  fetchTicketsRequest,
+  fetchTicketsFailure,
+  addTickets,
+  toggleFilter,
+  setFilters,
+  setSorting,
+  finishFetching,
+} = ticketSlice.actions;
 export default ticketSlice.reducer;

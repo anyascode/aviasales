@@ -10,20 +10,34 @@
     border: 1px #dfe5ec solid;
   }
   &Item {
-    font-weight: 600;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 18px;
+    &:first-child button {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    &:last-child button {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
     &:nth-child(2) {
       border-left: 1px #dfe5ec solid;
       border-right: 1px #dfe5ec solid;
     }
-    &:hover {
-      cursor: pointer;
-    }
-    &Active {
-      background-color: #2196f3;
-      color: white;
-    }
+  }
+}
+
+.button {
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 18px;
+  border: none;
+  background-color: white;
+  font-size: 12px;
+  width: 100%;
+
+  &Active {
+    background-color: #2196f3;
+    color: white;
   }
 }

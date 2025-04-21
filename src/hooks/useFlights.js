@@ -1,6 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchTicketsRequest, fetchTicketsFailure, addTickets } from '../app/features/tickets/ticketSlice';
+import {
+  fetchTicketsRequest,
+  fetchTicketsFailure,
+  addTickets,
+  finishFetching,
+} from '../app/features/tickets/ticketSlice';
 
 export default function useFlights() {
   const dispatch = useDispatch();
@@ -29,6 +34,7 @@ export default function useFlights() {
 
         if (data.stop) {
           ready = true;
+          dispatch(finishFetching());
         } else {
           console.log('Еще не всё. Подгружаем дальше...');
           await new Promise((resolve) => setTimeout(resolve, 500));
@@ -43,6 +49,7 @@ export default function useFlights() {
 
   useEffect(() => {
     fetchTickets();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return null;
